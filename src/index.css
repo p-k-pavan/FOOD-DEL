@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 *{
   padding:0px;
   margin:0px;
-  box-sizing:border-box
-
+  box-sizing:border-box;
+  font-family:Outfit;
 }
 
 body{
@@ -12,5 +14,10 @@ body{
 a{
   text-transform: none;
   color: inherit;
+}
+
+.App{
+  width: 80%;
+  margin: auto;
 }
 
