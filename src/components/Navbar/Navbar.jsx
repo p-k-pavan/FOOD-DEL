@@ -1,43 +1,50 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/frontend_assets/assets";
-import { Link as RouterLink } from "react-router-dom";
+import { Link, Link as RouterLink } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
+import { StoreContext } from "../../context/storeContext";
 
-const Navbar = ({setShowLogin}) => {
+const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("Home");
+
+  const{ getTotalCartAmount} =useContext(StoreContext)
 
   return (
     <div className="navbar">
-      <img src={assets.logo} alt="" className="logo" />
+      <Link to='/'><img src={assets.logo} alt="" className="logo" /></Link>
 
       <ul className="navbar-menu">
-        <RouterLink to="/" onClick={() => setMenu("Home")} className={menu === "Home" ? "active" : ""}>
+        <RouterLink
+          to="/"
+          onClick={() => setMenu("Home")}
+          className={menu === "Home" ? "active" : ""}
+        >
           Home
         </RouterLink>
-        <ScrollLink 
-          to="explore-menu" 
-          smooth={true} 
-          duration={500} 
-          onClick={() => setMenu("Menu")} 
+        <ScrollLink
+          to="explore-menu"
+          smooth={true}
+          duration={500}
+          onClick={() => setMenu("Menu")}
           className={menu === "Menu" ? "active" : ""}
         >
           Menu
         </ScrollLink>
-        <ScrollLink 
-          to="app-download" 
-          smooth={true} 
-          duration={500} 
-          onClick={() => setMenu("Mobile-App")} 
+        <ScrollLink
+          to="app-download"
+          smooth={true}
+          duration={500}
+          onClick={() => setMenu("Mobile-App")}
           className={menu === "Mobile-App" ? "active" : ""}
         >
           Mobile-App
         </ScrollLink>
-        <ScrollLink 
-          to="footer" 
-          smooth={true} 
-          duration={500} 
-          onClick={() => setMenu("Contact")} 
+        <ScrollLink
+          to="footer"
+          smooth={true}
+          duration={500}
+          onClick={() => setMenu("Contact")}
           className={menu === "Contact" ? "active" : ""}
         >
           Contact
@@ -46,10 +53,12 @@ const Navbar = ({setShowLogin}) => {
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />
         <div className="navbar-search-icon">
-          <img src={assets.basket_icon} alt="" />
-          <div className="dot"></div>
+          <Link to="/cart">
+            <img src={assets.basket_icon} alt="" />
+          </Link>
+          <div className={getTotalCartAmount()===0?"":"dot"}></div>
         </div>
-        <button onClick={()=>setShowLogin(true)}>Sign In</button>
+        <button onClick={() => setShowLogin(true)}>Sign In</button>
       </div>
     </div>
   );
