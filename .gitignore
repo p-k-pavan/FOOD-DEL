@@ -27,3 +27,4 @@ package.json
 package-lock
 package
 .json
+.env
