@@ -95,6 +95,7 @@ const ADD = ({url}) => {
               <option value="Salad">Salad</option>
               <option value="Rolls">Rolls</option>
               <option value="Deserts">Deserts</option>
+              <option value="Cake">Cake</option>
               <option value="Sandwich">Sandwich</option>
               <option value="Pure veg">Pure veg</option>
               <option value="Pasta">Pasta</option>
